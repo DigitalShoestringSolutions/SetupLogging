@@ -10,6 +10,7 @@ sudo cp setup_files/syslog.conf /etc/rsyslog.d/40-docker.conf
 sudo systemctl restart rsyslog
 
 sudo cp setup_files/logrotate /etc/logrotate.d/docker
+sudo mkdir -p /etc/cron.hourly
 sudo mv /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
 
 echo "---------------------"
