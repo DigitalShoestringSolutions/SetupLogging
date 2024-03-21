@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # init_SM.sh
 # initialisation scipt run on download of this Service Module
 
