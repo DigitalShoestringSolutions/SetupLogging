@@ -21,5 +21,3 @@ sudo mv /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
 echo "---------------------"
 echo "Setup Script Complete"
 echo "---------------------"
-
-sleep 3
