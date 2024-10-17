@@ -1,13 +1,16 @@
-echo "Starting Setup Script"
-echo "---------------------"
-echo "Setting Up Logging"
-echo "---------------------"
+# 8 space indentation on echo outputs
+echo "        Setting Up Logging"
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-echo "Installing files from:"
+echo "        Installing files from:"    # SCRIPT_DIR is long so don't echo this as well on one line
+echo -n "        "  # print 8 spaces without newline at end to indent below
 echo $SCRIPT_DIR
-echo "---------------------"
-sudo apt-get install rsyslog logrotate -y
+
+echo "        Installing rsyslog"
+sudo apt-get -qq install rsyslog -y
+echo "        Installing logrotate"
+sudo apt-get -qq install logrotate -y
 
 sudo install -d -m 755 -o root -g adm /var/log/containers
 
@@ -18,6 +21,4 @@ sudo cp $SCRIPT_DIR/logrotate /etc/logrotate.d/docker
 sudo mkdir -p /etc/cron.hourly
 sudo mv /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
 
-echo "---------------------"
-echo "Setup Script Complete"
-echo "---------------------"
+echo "        Setup Script Complete"
