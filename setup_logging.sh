@@ -7,7 +7,10 @@ echo "        Installing files from:"    # SCRIPT_DIR is long so don't echo this
 echo -n "        "  # print 8 spaces without newline at end to indent below
 echo $SCRIPT_DIR
 
-sudo apt-get -qq install rsyslog logrotate -y
+echo "        Installing rsyslog"
+sudo apt-get -qq install rsyslog -y
+echo "        Installing logrotate"
+sudo apt-get -qq install logrotate -y
 
 sudo install -d -m 755 -o root -g adm /var/log/containers
 
