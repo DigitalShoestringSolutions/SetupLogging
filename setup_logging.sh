@@ -7,6 +7,7 @@ echo "        Installing files from:"    # SCRIPT_DIR is long so don't echo this
 echo -n "        "  # print 8 spaces without newline at end to indent below
 echo $SCRIPT_DIR
 
+# Install packages
 echo "        Installing rsyslog"
 sudo apt-get -qq install rsyslog -y
 echo "        Installing logrotate"
@@ -19,6 +20,10 @@ sudo systemctl restart rsyslog
 
 sudo cp $SCRIPT_DIR/logrotate /etc/logrotate.d/docker
 sudo mkdir -p /etc/cron.hourly
-sudo mv /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
+
+# If /etc/cron.daily/logrotate exists, move it to hourly
+if [ -e /etc/cron.daily/logrotate ]; then
+    sudo mv /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
+fi
 
 echo "        Setup Script Complete"
