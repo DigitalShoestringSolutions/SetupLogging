@@ -23,6 +23,7 @@ sudo mkdir -p /etc/cron.hourly
 
 # If /etc/cron.daily/logrotate exists, move it to hourly
 if [ -e /etc/cron.daily/logrotate ]; then
+    echo "        Moving daily logrotate action to hourly"
     sudo mv /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
 fi
 
